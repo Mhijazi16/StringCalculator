@@ -1,0 +1,12 @@
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/bin/Debug/net7.0/Calculator.deps.json
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/bin/Debug/net7.0/Calculator.dll
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/bin/Debug/net7.0/Calculator.pdb
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.csproj.AssemblyReference.cache
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.GeneratedMSBuildEditorConfig.editorconfig
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.AssemblyInfoInputs.cache
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.AssemblyInfo.cs
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.csproj.CoreCompileInputs.cache
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.dll
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/refint/Calculator.dll
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/Calculator.pdb
+/home/subliminal/Documents/FootHill/StringCalculator/Calculator/obj/Debug/net7.0/ref/Calculator.dll
