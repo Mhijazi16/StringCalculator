@@ -1,20 +1,29 @@
-namespace Calculator;
+using System.Runtime.InteropServices;
+
+namespace Calculator.Core;
 using Xunit; 
 
 public class CalculatorTests 
 {
     private readonly Calculator _calculator;
-    CalculatorTests()
+    public CalculatorTests()
     {
         _calculator = new Calculator(); 
     }
     
     [Fact]
-    public void EmptyString_Should_ReturnZero()
+    public void EmptyStringOrNull_Should_ReturnZero()
     {
-        //Act 
         int result = _calculator.Add("");
-        //Assert
         Assert.Equal(0,result);
     }
+
+    [Theory]
+    [InlineData("1,2", 3)]
+    [InlineData("1,-2,5", 4)]
+    public void ShouldAddDifferentNumbbers(string values, int expected)
+    {
+        int result = _calculator.Add(values); 
+        Assert.Equal(expected,result);
+    } 
 }
