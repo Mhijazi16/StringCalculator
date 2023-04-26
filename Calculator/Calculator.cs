@@ -6,8 +6,9 @@ public class Calculator
 {
     public int Add(string values)
     {
-        values = Regex.Replace(values, "[^0-9,-]", "");
-        
+        values = Regex.Replace(values, @"\n", ",");
+        values = Regex.Replace(values, "[^0-9,-]", ""); 
+         
         if (String.IsNullOrEmpty(values))
             return 0;
         
