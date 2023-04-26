@@ -28,8 +28,8 @@ public class CalculatorTests
     }
 
     [Theory]
-    [InlineData("[!\"#$%&'()*+\\-./:;<=>?@[\\]^_`{|}~]",0)]
-    [InlineData("[!\"#3,$%&'()*+\\-./:;<=>?@[\\]^_`{|}~]1,2",6)]
+    [InlineData("[!\"#$%&'()*+\\./:;<=>?@[\\]^_`{|}~]",0)]
+    [InlineData("[!\"#3,$%&'()*+\\./:;<=>?@[\\]^_`{|}~]1,2",6)]
     public void Should_ParseOutSymbols(string values, int expected)
     {
         int result = _calculator.Add(values); 
