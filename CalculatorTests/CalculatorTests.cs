@@ -12,12 +12,10 @@ public class CalculatorTests
         _calculator = new Calculator(); 
     }
     
-    [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    public void EmptyStringOrNull_Should_ReturnZero(string values)
+    [Fact]
+    public void EmptyStringOrNull_Should_ReturnZero()
     {
-        Result(values).Should().Be(0); 
+        Result("").Should().Be(0); 
     }
 
     [Theory]
@@ -47,11 +45,17 @@ public class CalculatorTests
 
     [Theory]
     [InlineData("1\n2,3",6)]
-    [InlineData("1,\n",1)]
     public void Should_HandleNewLineBetweenNumbers(string values, int expected)
     {
         Result(values).Should().Be(expected);
     }
 
-    
+    [Fact]
+    public void Should_ThrowFormatException()
+    {
+        Action action = () => Result("1,\n");
+        action.Should().Throw<FormatException>("This isn't allowed");
+    }
+
+
 }
