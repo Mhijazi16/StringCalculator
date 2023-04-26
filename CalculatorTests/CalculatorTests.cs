@@ -1,8 +1,6 @@
-using System.Runtime.InteropServices;
-
 namespace Calculator.Core;
 using Xunit; 
-
+using FluentAssertions;
 public class CalculatorTests 
 {
     private readonly Calculator _calculator;
@@ -15,7 +13,7 @@ public class CalculatorTests
     public void EmptyStringOrNull_Should_ReturnZero()
     {
         int result = _calculator.Add("");
-        Assert.Equal(0,result);
+        result.Should().Be(0); 
     }
 
     [Theory]
@@ -23,8 +21,8 @@ public class CalculatorTests
     [InlineData("1,-2,5", 4)]
     public void ShouldAddDifferentNumbbers(string values, int expected)
     {
-        int result = _calculator.Add(values); 
-        Assert.Equal(expected,result);
+        int result = _calculator.Add(values);
+        result.Should().Be(expected);
     }
 
     [Theory]
@@ -32,7 +30,7 @@ public class CalculatorTests
     [InlineData("[!\"#3,$%&'()*+\\./:;<=>?@[\\]^_`{|}~]1,2",6)]
     public void Should_ParseOutSymbols(string values, int expected)
     {
-        int result = _calculator.Add(values); 
-        Assert.Equal(expected,result); 
+        int result = _calculator.Add(values);
+        result.Should().Be(expected);
     }
 }

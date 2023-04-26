@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "cGjmSbhS63RHh75dwAdXt028Sg9E/zdOaGtCZ/OrElfHmkN0PKNKarF2kfURruZOVYMmHv7KYAEFov/mTUXUgQ==",
+  "dgSpecHash": "PNArLV9941OWf7wXjsbNMN/otOYcUVfHGUK7gciszFLy81BiMpp7ryP5fcXLVloDklmsrP9X3L98VNbwcU2hJw==",
   "success": true,
   "projectFilePath": "/home/subliminal/Documents/FootHill/StringCalculator/Calculator/Calculator.csproj",
   "expectedPackageFiles": [
+    "/home/subliminal/.nuget/packages/fluentassertions/6.11.0/fluentassertions.6.11.0.nupkg.sha512",
+    "/home/subliminal/.nuget/packages/system.configuration.configurationmanager/4.4.0/system.configuration.configurationmanager.4.4.0.nupkg.sha512",
+    "/home/subliminal/.nuget/packages/system.security.cryptography.protecteddata/4.4.0/system.security.cryptography.protecteddata.4.4.0.nupkg.sha512",
     "/home/subliminal/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
   ],
   "logs": []
