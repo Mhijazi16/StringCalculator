@@ -45,5 +45,13 @@ public class CalculatorTests
         Result(values).Should().Be(expected);
     }
 
+    [Theory]
+    [InlineData("1\n2,3",6)]
+    [InlineData("1,\n",1)]
+    public void Should_HandleNewLineBetweenNumbers(string values, int expected)
+    {
+        Result(values).Should().Be(expected);
+    }
+
     
 }
