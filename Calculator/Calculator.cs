@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
-
-namespace Calculator;
+namespace Calculator.Core;
 using System.Linq; 
-public class Calculator 
+public class Calculator
 {
+    private char delimiter = ','; 
     public int Add(string values)
     {
         ApplyRegex(ref values);
@@ -13,18 +13,34 @@ public class Calculator
         
         return SumUpValues(values);
     }
-
-    private static int SumUpValues(string values)
+    private int SumUpValues(string values)
     {
         int sum = values
-            .Split(",")
+            .Split(delimiter)
             .Select(x => int.Parse(x))
             .Sum();
         return sum;
     }
     private void ApplyRegex(ref string values)
     {
-        values = Regex.Replace(values, @"\n", ",");
-        values = Regex.Replace(values, "[^0-9,-]", ""); 
+        SetUpDelimiter(ref values);
+        string d = "";
+        d += delimiter;
+        string pattern = $"[^0-9-{delimiter}]";
+        values = Regex.Replace(values, @"\n", d);
+        values = Regex.Replace(values,pattern, ""); 
+    }
+    private void SetUpDelimiter(ref string values)
+    {
+        if (values.Length < 4)
+            return;  
+        
+        string start = values.Substring(0, 2);
+        char end = values[3];
+        if (start == "//" && end == '\n')
+        {
+            delimiter = values[2];
+            values = values.Substring(4, values.Length -4 );
+        }
     }
 }
