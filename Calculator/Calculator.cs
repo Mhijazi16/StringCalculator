@@ -6,7 +6,8 @@ public class Calculator
     private char delimiter = ','; 
     public int Add(string values)
     {
-        ApplyRegex(ref values);
+        SetUpDelimiter(ref values);
+        SetUpRegex(ref values);
         
         if (String.IsNullOrEmpty(values))
             return 0;
@@ -21,13 +22,11 @@ public class Calculator
             .Sum();
         return sum;
     }
-    private void ApplyRegex(ref string values)
+    private void SetUpRegex(ref string values)
     {
-        SetUpDelimiter(ref values);
-        string d = "";
-        d += delimiter;
         string pattern = $"[^0-9-{delimiter}]";
-        values = Regex.Replace(values, @"\n", d);
+        
+        values = Regex.Replace(values, @"\n", delimiter.ToString());
         values = Regex.Replace(values,pattern, ""); 
     }
     private void SetUpDelimiter(ref string values)
