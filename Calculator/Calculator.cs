@@ -3,43 +3,43 @@ namespace Calculator.Core;
 using System.Linq; 
 public class Calculator
 {
-    private char delimiter = ','; 
+    private char _delimiter = ',';
+    private string _values; 
     public int Add(string values)
     {
-        SetUpDelimiter(ref values);
-        SetUpRegex(ref values);
+        _values = values;
+        SetUpDelimiter();
+        SetUpRegex();
         
         if (String.IsNullOrEmpty(values))
             return 0;
-        
-        return SumUpValues(values);
+        return SumUpValues();
     }
-    private int SumUpValues(string values)
+    private int SumUpValues()
     {
-        int sum = values
-            .Split(delimiter)
+        int sum = _values
+            .Split(_delimiter)
             .Select(x => int.Parse(x))
             .Sum();
         return sum;
     }
-    private void SetUpRegex(ref string values)
+    private void SetUpRegex()
     {
-        string pattern = $"[^0-9-{delimiter}]";
+        string pattern = $"[^0-9-{_delimiter}]";
         
-        values = Regex.Replace(values, @"\n", delimiter.ToString());
-        values = Regex.Replace(values,pattern, ""); 
+        _values = Regex.Replace(_values, @"\n", _delimiter.ToString());
+        _values = Regex.Replace(_values,pattern, ""); 
     }
-    private void SetUpDelimiter(ref string values)
+    private void SetUpDelimiter()
     {
-        if (values.Length < 4)
+        if (_values.Length < 4)
             return;  
         
-        string start = values.Substring(0, 2);
-        char end = values[3];
-        if (start == "//" && end == '\n')
+        string start = _values.Substring(0, 2);
+        if (start == "//" && _values[3] == '\n')
         {
-            delimiter = values[2];
-            values = values.Substring(4, values.Length -4 );
+            _delimiter = _values[2];
+            _values = _values.Substring(4, _values.Length -4 );
         }
     }
 }
