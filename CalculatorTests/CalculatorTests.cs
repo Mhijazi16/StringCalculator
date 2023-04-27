@@ -68,4 +68,11 @@ public class CalculatorTests
         action.Should().Throw<ArgumentOutOfRangeException>();
     }
 
+    [Theory]
+    [InlineData("1002,2", 2)]
+    [InlineData("500,600",1000)]
+    public void Should_StayUnder1000(string values, int expected)
+    {
+        Result(values).Should().Be(expected);
+    }
 }
