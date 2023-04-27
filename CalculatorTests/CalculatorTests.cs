@@ -63,4 +63,11 @@ public class CalculatorTests
         Result(values).Should().Be(expected);
     }
 
+    [Fact]
+    public void Should_ThrowExceptionForNegative()
+    {
+        Action action = () => Result("1,-2,-1");
+        action.Should().Throw<ArgumentOutOfRangeException>();
+    }
+
 }
