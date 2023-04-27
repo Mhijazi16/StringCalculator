@@ -17,11 +17,20 @@ public class Calculator
     }
     private int SumUpValues()
     {
-        int sum = _values
+        var elements = _values
             .Split(_delimiter)
             .Select(x => int.Parse(x))
-            .Sum();
-        return sum;
+            .ToList();
+
+        var negatives = elements.Where(x => x < 0).ToList();
+        
+        if (negatives.Any())
+        {
+            var message= "Negative aren't Allowed : " + string.Join(", ", negatives);
+            throw new ArgumentOutOfRangeException(message);
+        }
+
+        return elements.Sum();
     }
     private void SetUpRegex()
     {

@@ -18,7 +18,6 @@ public class CalculatorTests
 
     [Theory]
     [InlineData("1,2", 3)]
-    [InlineData("1,-2,5", 4)]
     public void ShouldAddDifferentNumbbers(string values, int expected)
     {
         Result(values).Should().Be(expected);
@@ -35,7 +34,6 @@ public class CalculatorTests
     
     [Theory]
     [InlineData("1,2,3,4,5",15)]
-    [InlineData("-100,-200,-300",-600)]
     public void Should_HandleUnknowAmountOfNumbers(string values, int expected)
     {
         Result(values).Should().Be(expected);
@@ -61,6 +59,13 @@ public class CalculatorTests
     public void Should_ParseAndReplaceDelimiter(string values, int expected)
     {
         Result(values).Should().Be(expected);
+    }
+
+    [Fact]
+    public void Should_ThrowExceptionForNegative()
+    {
+        Action action = () => Result("1,-2,-1");
+        action.Should().Throw<ArgumentOutOfRangeException>();
     }
 
 }
