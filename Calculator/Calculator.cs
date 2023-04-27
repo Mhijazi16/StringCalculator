@@ -20,6 +20,7 @@ public class Calculator
         var elements = _values
             .Split(_delimiter)
             .Select(x => int.Parse(x))
+            .Where(x => x <= 1000)
             .ToList();
 
         var negatives = elements.Where(x => x < 0).ToList();
@@ -29,8 +30,9 @@ public class Calculator
             var message= "Negative aren't Allowed : " + string.Join(", ", negatives);
             throw new ArgumentOutOfRangeException(message);
         }
-
-        return elements.Sum();
+        
+        int sum = elements.Sum();
+        return sum > 1000 ? 1000 : sum; 
     }
     private void SetUpRegex()
     {
