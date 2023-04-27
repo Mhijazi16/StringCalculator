@@ -1,30 +1,45 @@
 ﻿using System.Text.RegularExpressions;
-
-namespace Calculator;
+namespace Calculator.Core;
 using System.Linq; 
-public class Calculator 
+public class Calculator
 {
+    private char _delimiter = ',';
+    private string _values; 
     public int Add(string values)
     {
-        ApplyRegex(ref values);
+        _values = values;
+        SetUpDelimiter();
+        SetUpRegex();
         
-        if (String.IsNullOrEmpty(values))
+        if (String.IsNullOrEmpty(_values))
             return 0;
-        
-        return SumUpValues(values);
+        return SumUpValues();
     }
-
-    private static int SumUpValues(string values)
+    private int SumUpValues()
     {
-        int sum = values
-            .Split(",")
+        int sum = _values
+            .Split(_delimiter)
             .Select(x => int.Parse(x))
             .Sum();
         return sum;
     }
-    private void ApplyRegex(ref string values)
+    private void SetUpRegex()
     {
-        values = Regex.Replace(values, @"\n", ",");
-        values = Regex.Replace(values, "[^0-9,-]", ""); 
+        string pattern = $"[^0-9-{_delimiter}]";
+        
+        _values = Regex.Replace(_values, @"\n", _delimiter.ToString());
+        _values = Regex.Replace(_values,pattern, ""); 
+    }
+    private void SetUpDelimiter()
+    {
+        if (_values.Length < 4)
+            return;  
+        
+        string start = _values.Substring(0, 2);
+        if (start == "//" && _values[3] == '\n')
+        {
+            _delimiter = _values[2];
+            _values = _values.Substring(4, _values.Length -4 );
+        }
     }
 }

@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 namespace Calculator.Core;
 using Xunit; 
 using FluentAssertions;
@@ -56,6 +54,13 @@ public class CalculatorTests
         Action action = () => Result("1,\n");
         action.Should().Throw<FormatException>("This isn't allowed");
     }
-
+    
+    [Theory]
+    [InlineData("//;\n1;1",2)]
+    [InlineData("//&\n2&3", 5)]
+    public void Should_ParseAndReplaceDelimiter(string values, int expected)
+    {
+        Result(values).Should().Be(expected);
+    }
 
 }
