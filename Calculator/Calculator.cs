@@ -11,7 +11,7 @@ public class Calculator
         SetUpDelimiter();
         SetUpRegex();
         
-        if (String.IsNullOrEmpty(values))
+        if (String.IsNullOrEmpty(_values))
             return 0;
         return SumUpValues();
     }
